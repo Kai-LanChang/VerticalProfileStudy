@@ -1,9 +1,8 @@
 #The ozonesonde data can be found in NOAA ESRL Global Monitoring Division (GMD) database
 #ftp://aftp.cmdl.noaa.gov/data/ozwv/Ozonesonde/. Preparation work includes installation of
-#all R packages by using install.packages("."), and changing working directory to the folder
+#all R packages by using install.packages("."), and changes working directory to the folder
 #which the data have been saved. All the output will be saved at following directory "dir".
 #This example is made for the trend analysis at Trinidad Head, CA (1998-2018).
-#Kai-Lan Chang (CIRES at NOAA/ESRL/CSD, 1st Oct 2019)
 
 setwd("C:/Users/kchang/Downloads/ozonesonde-gmd/Trinidad Head, California/")
 dir="C:/Users/kchang/Downloads/ssgam/"
@@ -82,8 +81,11 @@ mtext('[ppb]', side=3, line=0, at=2019.5, cex=1.5)
 
 par(fig=c(0,10,1,4.5)/10)
 par(new=T)
-matplot(LL, surf[,ncol(surf):1], xlab="Year", ylab="Anomaly [ppb]", cex.lab=1.5, xlim=c(1999,2017), col=rainbow(ncol(surf)), type="l")
-image.plot(legend.only=T, nlevel=ncol(surf), col=rev(rainbow(ncol(surf))), zlim=range(surf), axis.args=list(at=seq(min(surf),max(surf),length=10), labels=c(NA,rev(seq(150,950,length=9)))))
+matplot(LL, surf[,ncol(surf):1], xlab="Year", ylab="Anomaly [ppb]", cex.lab=1.5,
+    xlim=c(1999,2017), col=rainbow(ncol(surf)), type="l")
+image.plot(legend.only=T, nlevel=ncol(surf), col=rev(rainbow(ncol(surf))), zlim=range(surf),
+    axis.args=list(at=seq(min(surf),max(surf),length=10),
+    labels=c(NA,rev(seq(150,950,length=9)))))
 par(fig=c(0,10,1,4.5)/10)
 par(new=T)
 mtext('[hPa]', side=3, line=1, at=2019.5, cex=1.5)
@@ -109,9 +111,12 @@ mtext('[ppb]', side=3, line=0, at=12.4, cex=1.5)
 
 par(fig=c(0,10,1,4.5)/10)
 par(new=T)
-matplot(LL, surf[,ncol(surf):1], xlab="Year", ylab="Climatology [ppb]", cex.lab=1.5, xlim=c(1.35,11.65), col=rainbow(ncol(surf)), type="l")
+matplot(LL, surf[,ncol(surf):1], xlab="Year", ylab="Climatology [ppb]", cex.lab=1.5,
+    xlim=c(1.35,11.65), col=rainbow(ncol(surf)), type="l")
 axis(1,at=seq(1,12,by=1),labels=seq(1,12,by=1))
-image.plot(legend.only=T, nlevel=ncol(surf), col=rev(rainbow(ncol(surf))), zlim=range(surf), axis.args=list(at=seq(min(surf),max(surf),length=10), labels=c(NA,rev(seq(150,950,length=9)))))
+image.plot(legend.only=T, nlevel=ncol(surf), col=rev(rainbow(ncol(surf))), zlim=range(surf),
+    axis.args=list(at=seq(min(surf),max(surf),length=10),
+    labels=c(NA,rev(seq(150,950,length=9)))))
 par(fig=c(0,10,1,4.5)/10)
 par(new=T)
 mtext('[hPa]', side=3, line=1, at=12.4, cex=1.5)

@@ -1,9 +1,8 @@
 #The ozonesonde data can be found in NOAA ESRL Global Monitoring Division (GMD) database at
 #ftp://aftp.cmdl.noaa.gov/data/ozwv/Ozonesonde/. Preparation work includes installation of
-#all R packages by using install.packages("."), and changing working directory to the folder
+#all R packages by using install.packages("."), and changes working directory to the folder
 #which the data have been saved. All the output will be saved at following directory "dir".
 #This example is made for the trend analysis at Hilo, Hawaii (1982-2018).
-#Kai-Lan Chang (CIRES at NOAA/ESRL/CSD, 1st Oct 2019)
 
 setwd("C:/Users/kchang/Downloads/ozonesonde-gmd/Hilo, Hawaii/")
 dir="C:/Users/kchang/Downloads/ssgam/"
@@ -98,8 +97,8 @@ ll=aa[[1]]$y
 ll=rev(approx(x=pr$Alt,y=pr$Press,xout=ll)$y)
 png(paste(dir,"o3_hilo_0_15km_season_pr.png", sep=""), height=10, width=14, units="in", res=500)
 par(mar=c(3.5, 3.5, 2, 1), mgp=c(2.4, 0.8, 0), las=1)
-image.plot(LL,ll,surf, xlab="Month", ylab="Pressure [hPa]", horizontal=F, col=viridis(20),  xaxt="n",
-	breaks=seq(20, 180, length.out=21), ylim=c(130,1000), cex.lab=1.5, yaxt="n")
+image.plot(LL,ll,surf, xlab="Month", ylab="Pressure [hPa]", horizontal=F, col=viridis(20),
+    xaxt="n", breaks=seq(20, 180, length.out=21), ylim=c(130,1000), cex.lab=1.5, yaxt="n")
 contour(LL,ll,surf,drawlabels=T, add=TRUE)
 axis(1,at=seq(1,12,by=1),labels=seq(1,12,by=1))
 axis(2,at=seq(150,1000,by=50),labels=rev(seq(150,1000,by=50)))
@@ -127,8 +126,11 @@ mtext('[ppb]', side=3, line=0, at=2019.5, cex=1.5)
 
 par(fig=c(0,10,1,4.5)/10)
 par(new=T)
-matplot(LL, surf[,ncol(surf):1], xlab="Year", ylab="Anomaly [ppb]", cex.lab=1.5, xlim=c(1984,2017), col=rainbow(ncol(surf)), type="l")
-image.plot(legend.only=T, nlevel=ncol(surf), col=rev(rainbow(ncol(surf))), zlim=range(surf), axis.args=list(at=seq(min(surf),max(surf),length=10), labels=c(NA,rev(seq(150,950,length=9)))))
+matplot(LL, surf[,ncol(surf):1], xlab="Year", ylab="Anomaly [ppb]", cex.lab=1.5,
+    xlim=c(1984,2017), col=rainbow(ncol(surf)), type="l")
+image.plot(legend.only=T, nlevel=ncol(surf), col=rev(rainbow(ncol(surf))), zlim=range(surf),
+    axis.args=list(at=seq(min(surf),max(surf),length=10),
+    labels=c(NA,rev(seq(150,950,length=9)))))
 par(fig=c(0,10,1,4.5)/10)
 par(new=T)
 mtext('[hPa]', side=3, line=1, at=2019.5, cex=1.5)
@@ -154,9 +156,12 @@ mtext('[ppb]', side=3, line=0, at=12.4, cex=1.5)
 
 par(fig=c(0,10,1,4.5)/10)
 par(new=T)
-matplot(LL, surf[,ncol(surf):1], xlab="Year", ylab="Climatology [ppb]", cex.lab=1.5, xlim=c(1.35,11.65), col=rainbow(ncol(surf)), type="l")
+matplot(LL, surf[,ncol(surf):1], xlab="Year", ylab="Climatology [ppb]", cex.lab=1.5,
+    xlim=c(1.35,11.65), col=rainbow(ncol(surf)), type="l")
 axis(1,at=seq(1,12,by=1),labels=seq(1,12,by=1))
-image.plot(legend.only=T, nlevel=ncol(surf), col=rev(rainbow(ncol(surf))), zlim=range(surf), axis.args=list(at=seq(min(surf),max(surf),length=10), labels=c(NA,rev(seq(150,950,length=9)))))
+image.plot(legend.only=T, nlevel=ncol(surf), col=rev(rainbow(ncol(surf))), zlim=range(surf),
+    axis.args=list(at=seq(min(surf),max(surf),length=10),
+    labels=c(NA,rev(seq(150,950,length=9)))))
 par(fig=c(0,10,1,4.5)/10)
 par(new=T)
 mtext('[hPa]', side=3, line=1, at=12.4, cex=1.5)
