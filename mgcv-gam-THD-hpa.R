@@ -16,7 +16,7 @@ library(corrplot)
 library(dichromat)
 col=colorschemes$DarkRedtoBlue.18
 col=c('blue 4',col,'red 4')
-11
+
 filelist = list.files(pattern = NULL)
 datalist = lapply(filelist, function(x)read.table(x, header=F,sep="", skip=29, fill=T)) 
 
