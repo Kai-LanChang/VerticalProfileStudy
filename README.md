@@ -1,2 +1,2 @@
 # VerticalProfileStudy
-This directory contains R code for vertical trend analysis by the smoothing spline ANOVA approach.
+This repository contains R code for the trend analysis of vertical profile by the smoothing spline ANOVA approach.
